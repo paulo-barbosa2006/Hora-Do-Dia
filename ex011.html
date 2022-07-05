@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do Dia</title>
+    <style>
+        *{ 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #CBBA8B;
+        }
+
+        h1{
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        p{
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        span{
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+
+            color: white;
+        }
+
+        .container{
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -45%);
+        }
+
+        .caixa{
+            margin: 0 auto;
+            padding: 40px 40px 55px 40px;
+
+            background-color: #fff;
+            width: 400px;
+            border-radius: 5px
+
+            -webkit-box-shadow 10px 10px 20px -7px rgba(0,0,0,0.56);
+            box-shadow: 10px 10px 20px -7px rgba(0,0,0,0.56);    
+        }
+
+        img{
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body onload="carregar()">
+    <div class="container">
+        <header>
+            <h1>Hora do Dia</h1>
+        </header>
+        <main>
+            <div class="caixa">
+                <p id="txt1"></p>
+                <img id="imagem" src="">
+            </div>
+        </main>
+        <footer>
+            <span>&copy; MoonCode</span>
+        </footer>
+    </div>
+    <script>
+        function carregar(){
+            var data = new Date()
+            hora = 14
+            //var hora = data.getHours()
+            var img = document.querySelector('img#imagem')
+            var txt1 = document.querySelector('p#txt1')
+
+            txt1.innerHTML = `Agora são ${hora} horas.`
+
+            if(hora >= 6 && hora < 13){
+                img.src = 'amanhecer.jpg'
+            }else if(hora >= 13 && hora < 20){
+                img.src = 'por-do-sol.jpg'
+                document.body.style.backgroundColor = '#906756'
+            }else{
+                img.src = 'noite.jpg'
+                document.body.style.background = '#3C3D3E'
+            }
+        }
+    </script>
+</body>
+</html>
