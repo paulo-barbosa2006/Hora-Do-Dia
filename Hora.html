@@ -16,6 +16,8 @@
             background-color: #CBBA8B;
         }
 
+        .noite{background-color: #3C3D3E;}
+
         h1{
             text-align: center;
             margin-bottom: 40px;
@@ -83,22 +85,23 @@
     </div>
     <script>
         function carregar(){
-            var data = new Date()
-            hora = 14
-            //var hora = data.getHours()
-            var img = document.querySelector('img#imagem')
-            var txt1 = document.querySelector('p#txt1')
+            let data = new Date()
+            let hora = data.getHours()
+            let info = document.querySelector('#txt1')
+            let img = document.querySelector('#imagem')
+            let body = document.body
 
-            txt1.innerHTML = `Agora são ${hora} horas.`
-
-            if(hora >= 6 && hora < 13){
+            if(hora >= 6 && hora <= 13){
+                info.innerHTML = `Agora são ${hora} horas. Bom dia!`
                 img.src = 'amanhecer.jpg'
-            }else if(hora >= 13 && hora < 20){
+            }else if(hora > 13 && hora < 19){
+                info.innerHTML = `Agora são ${hora} horas. Boa tarde!`
                 img.src = 'por-do-sol.jpg'
-                document.body.style.backgroundColor = '#906756'
+                body.style.backgroundColor = "#906756"
             }else{
+                info.innerHTML = `Agora são ${hora} horas. Boa noite!`
                 img.src = 'noite.jpg'
-                document.body.style.background = '#3C3D3E'
+                body.classList.toggle('noite')
             }
         }
     </script>
